@@ -5,14 +5,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.uce.modelo.Estudiante;
+import com.example.demo.uce.modelo.Profesor;
 import com.example.demo.uce.service.IEstudianteService;
+import com.example.demo.uce.service.IProfesorService;
 
 @SpringBootApplication
 public class ProyectoPaU2WdApplication implements CommandLineRunner {
 
 	@Autowired
 	private IEstudianteService estudianteService;
+
+	@Autowired
+	private IProfesorService profesorService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2WdApplication.class, args);
@@ -21,16 +25,16 @@ public class ProyectoPaU2WdApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Estudiante estu = new Estudiante();
-		estu.setNombre("Willan");
-		estu.setApellido("Diaz");
-		estu.setCedula("172581538");
-		estu.setCiudad("Quito");
-		estu.setGenero("M");
+		Profesor profe = new Profesor();
+		profe.setNombre("Willan");
+		profe.setApellido("Diaz");
+		profe.setCedula("172581538");
+		profe.setAsignatura("Programacion avanzada");
+		profe.setGenero("M");
 		// this.estudianteService.agregar(estu);
 
-		estu.setApellido("Cordova");
-		this.estudianteService.modificar(estu);
+		profe.setApellido("Cordova");
+		this.profesorService.modificar(profe);
 
 		// this.estudianteService.borrar(3);
 
