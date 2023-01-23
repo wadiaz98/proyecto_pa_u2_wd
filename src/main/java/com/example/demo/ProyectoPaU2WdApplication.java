@@ -10,14 +10,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Ciudadano;
 import com.example.demo.uce.modelo.Empleado;
-import com.example.demo.uce.modelo.Estudiante;
-import com.example.demo.uce.service.IEstudianteService;
+import com.example.demo.uce.service.ICiudadanoService;
+import com.example.demo.uce.service.IEmpleadoService;
 
 @SpringBootApplication
 public class ProyectoPaU2WdApplication implements CommandLineRunner {
 
 	@Autowired
-	private IEstudianteService estudianteService;
+	private IEmpleadoService empleadoService;
+	@Autowired
+	private ICiudadanoService ciudadanoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2WdApplication.class, args);
@@ -25,32 +27,33 @@ public class ProyectoPaU2WdApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		Estudiante estu = new Estudiante();
-		estu.setNombre("Willan");
-		estu.setApellido("Diaz");
-		estu.setCedula("172581538");
-		estu.setCiudad("Quito");
-		estu.setGenero("M");
-		// this.estudianteService.agregar(estu);
-
-		estu.setApellido("Cordova");
-		this.estudianteService.modificar(estu);
-
-		// this.estudianteService.borrar(3);
-
-		// this.estudianteService.borrar(2);
 
 		Ciudadano ciudadano = new Ciudadano();
 		ciudadano.setApellido("Diaz");
 		ciudadano.setNombre("Diaz");
 
+		this.ciudadanoService.guardar(ciudadano);
+
+		ciudadano.setNombre("Willan");
+		this.ciudadanoService.mofidicar(ciudadano);
+		this.ciudadanoService.buscar(1);
+
 		Empleado empleado = new Empleado();
 		empleado.setCiudadano(ciudadano);
 		empleado.setSalario(new BigDecimal(200));
 		empleado.setFechaIngreso(LocalDateTime.now());
-
 		ciudadano.setEmpleado(empleado);
+
+		this.empleadoService.guardar(empleado);
+
+		empleado.setSalario(new BigDecimal(300));
+		this.empleadoService.modificar(empleado);
+
+		this.empleadoService.buscar(1);
+
+		this.empleadoService.borrar(8);
+		this.ciudadanoService.eliminar(17);
+
 	}
 
 }

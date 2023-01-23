@@ -6,4 +6,10 @@ public interface ICiudadanoService {
 
 	public void guardar(Ciudadano ciudadano);
 
+	public void mofidicar(Ciudadano ciudadano);
+
+	public Ciudadano buscar(Integer id);
+
+	public void eliminar(Integer id);
+
 }

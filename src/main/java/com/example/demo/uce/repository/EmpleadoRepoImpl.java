@@ -2,39 +2,39 @@ package com.example.demo.uce.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.uce.modelo.Ciudadano;
+import com.example.demo.uce.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
-@Transactional
 @Repository
-public class CiudadanoRepoImpl implements ICiudadanoRepo {
+@Transactional
+public class EmpleadoRepoImpl implements IEmpleadoRepo {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Override
-	public void insertar(Ciudadano ciudadano) {
+	public void agregar(Empleado empleado) {
 		// TODO Auto-generated method stub
-		this.entityManager.persist(ciudadano);
+		this.entityManager.persist(empleado);
 	}
 
 	@Override
-	public Ciudadano buscar(Integer id) {
+	public void actualizar(Empleado empleado) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Ciudadano.class, id);
+		this.entityManager.merge(empleado);
 	}
 
 	@Override
-	public void actualizar(Ciudadano ciudadano) {
+	public Empleado buscar(Integer id) {
 		// TODO Auto-generated method stub
-		this.entityManager.merge(ciudadano);
+		return this.entityManager.find(Empleado.class, id);
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public void borrar(Integer id) {
 		// TODO Auto-generated method stub
 		this.entityManager.remove(this.buscar(id));
 	}
