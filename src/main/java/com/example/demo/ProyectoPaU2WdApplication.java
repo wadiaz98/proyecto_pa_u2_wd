@@ -32,27 +32,28 @@ public class ProyectoPaU2WdApplication implements CommandLineRunner {
 		ciudadano.setApellido("Diaz");
 		ciudadano.setNombre("Diaz");
 
-		this.ciudadanoService.guardar(ciudadano);
-
-		ciudadano.setNombre("Willan");
-		this.ciudadanoService.mofidicar(ciudadano);
-		this.ciudadanoService.buscar(1);
-
 		Empleado empleado = new Empleado();
 		empleado.setCiudadano(ciudadano);
 		empleado.setSalario(new BigDecimal(200));
 		empleado.setFechaIngreso(LocalDateTime.now());
+
 		ciudadano.setEmpleado(empleado);
+		this.ciudadanoService.guardar(ciudadano);
 
-		this.empleadoService.guardar(empleado);
+		// Segundo ejemplo
+		/*
+		Ciudadano ciudadano2 = new Ciudadano();
+		ciudadano2.setNombre("Willan");
+		ciudadano2.setApellido("Diaz");
 
-		empleado.setSalario(new BigDecimal(300));
-		this.empleadoService.modificar(empleado);
+		Empleado empleado2 = new Empleado();
+		empleado2.setCiudadano(ciudadano2);
+		empleado2.setFechaIngreso(LocalDateTime.now());
+		empleado2.setSalario(new BigDecimal(300));
 
-		this.empleadoService.buscar(1);
-
-		this.empleadoService.borrar(8);
-		this.ciudadanoService.eliminar(17);
+		this.ciudadanoService.guardar(ciudadano2);
+		this.empleadoService.guardar(empleado2);
+		*/
 
 	}
 
