@@ -7,7 +7,7 @@ import com.example.demo.uce.modelo.Hotel;
 import com.example.demo.uce.repository.IHotelRepo;
 
 @Service
-public class HotelServiceImpl implements IHotelSService {
+public class HotelServiceImpl implements IHotelService {
 
 	@Autowired
 	private IHotelRepo hotelRepo;
@@ -25,7 +25,7 @@ public class HotelServiceImpl implements IHotelSService {
 	}
 
 	@Override
-	public Hotel buscar(Integer id) {
+	public Hotel consulta(Integer id) {
 		// TODO Auto-generated method stub
 		return this.hotelRepo.buscar(id);
 	}
@@ -34,6 +34,12 @@ public class HotelServiceImpl implements IHotelSService {
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.hotelRepo.borrar(id);
+	}
+
+	@Override
+	public Hotel consultaLigero(Integer id) {
+		// TODO Auto-generated method stub
+		return this.consultaLigero(id);
 	}
 
 }

@@ -10,6 +10,8 @@ public interface IHotelRepo {
 
 	public Hotel buscar(Integer id);
 
+	public Hotel buscarLigero(Integer id);
+
 	public void borrar(Integer id);
 
 }
