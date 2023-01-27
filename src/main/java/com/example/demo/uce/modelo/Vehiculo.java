@@ -29,7 +29,7 @@ public class Vehiculo {
 	@Column(name = "vehi_color")
 	private String color;
 
-	@OneToOne(mappedBy = "vehiculo", cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL)
 	private Matricula matricula;
 
 	// Set y get
