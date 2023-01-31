@@ -1,8 +1,8 @@
-package com.example.demo.uce.repository;
+package com.example.demo.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.uce.modelo.Habitacion;
+import com.example.demo.modelo.Vehiculo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,27 +10,27 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class HabitacionRepoImpl implements IHabitacionRepo {
+public class VehiculoRepoImpl implements IVehiculoRepo {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Override
-	public void insertar(Habitacion habitacion) {
+	public void insertar(Vehiculo vehiculo) {
 		// TODO Auto-generated method stub
-		this.entityManager.persist(habitacion);
+		this.entityManager.persist(vehiculo);
 	}
 
 	@Override
-	public void actualizar(Habitacion habitacion) {
+	public void actualizar(Vehiculo vehiculo) {
 		// TODO Auto-generated method stub
-		this.entityManager.merge(habitacion);
+		this.entityManager.merge(vehiculo);
 	}
 
 	@Override
-	public Habitacion buscar(Integer id) {
+	public Vehiculo buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Habitacion.class, id);
+		return this.entityManager.find(Vehiculo.class, id);
 	}
 
 	@Override
