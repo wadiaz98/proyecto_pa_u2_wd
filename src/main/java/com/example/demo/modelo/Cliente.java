@@ -1,15 +1,12 @@
 package com.example.demo.modelo;
 
-import java.util.Set;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,11 +14,6 @@ import jakarta.persistence.Table;
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clie_seq")
-	@SequenceGenerator(name = "clie_seq", sequenceName = "clie_seq", allocationSize = 1)
-	@Column(name = "clie_id")
-	private Integer id;
-
 	@Column(name = "clie_numero_cedula")
 	private String numeroCedula;
 
@@ -34,17 +26,10 @@ public class Cliente {
 	@Column(name = "clie_edad")
 	private Integer edad;
 
-	@ManyToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
-	private Set<Vehiculo> vehiculos;
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
+	private List<Renta> rentas;
 
 	// Set y Get
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNumeroCedula() {
 		return numeroCedula;
@@ -78,18 +63,18 @@ public class Cliente {
 		this.edad = edad;
 	}
 
-	public Set<Vehiculo> getVehiculos() {
-		return vehiculos;
+	public List<Renta> getRentas() {
+		return rentas;
 	}
 
-	public void setVehiculos(Set<Vehiculo> vehiculos) {
-		this.vehiculos = vehiculos;
+	public void setRentas(List<Renta> rentas) {
+		this.rentas = rentas;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", numeroCedula=" + numeroCedula + ", Nombre=" + Nombre + ", apellido=" + apellido
-				+ ", edad=" + edad + "]";
+		return "Cliente [ numeroCedula=" + numeroCedula + ", Nombre=" + Nombre + ", apellido=" + apellido + ", edad="
+				+ edad + "]";
 	}
 
 }

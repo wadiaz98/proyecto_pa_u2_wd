@@ -25,15 +25,15 @@ public class VehiculoServiceImpl implements IVehiculoService {
 	}
 
 	@Override
-	public Vehiculo consultar(Integer id) {
+	public Vehiculo consultar(String placa) {
 		// TODO Auto-generated method stub
-		return this.vehiculoRepo.buscar(id);
+		return this.vehiculoRepo.buscar(placa);
 	}
 
 	@Override
-	public void borrar(Integer id) {
+	public void borrar(String placa) {
 		// TODO Auto-generated method stub
-		this.vehiculoRepo.borrar(id);
+		this.vehiculoRepo.borrar(placa);
 	}
 
 }
